@@ -34,7 +34,7 @@ function execute(event, signal) {
 
     //return xmlToJson(result);
   } catch (exception) {
-    log.info("[app/entities/actions/gmsOnAlert] error: " + exception);
+    log.info("[app/entities/actions/gmsOnAlert] error: " +  JSON.stringify(exception));
     //return exception;
   }
 
