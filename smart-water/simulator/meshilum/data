@@ -9,11 +9,13 @@ var http = require("http");
 var subdomain = require("subdomain");
 var log = require("log");
 log.setLevel("INFO");
-const dmpBrokerToken="VTk2NkM1RjhEODpteURtcEJyb2tlcjpFOEIwOTc0RTk3Mzg0ODdCMjQ5Qzc5QUNFNDkyOTdDNQ==";
+
+var config = require("./config");
+
 
 
         //Build the url of the ingest api
-        const api = "https://convergia-marvette.scriptrapps.io/app/api/subscription/subscriber?auth_token="+dmpBrokerToken;
+        const api = "https://"+config.subDomain+".scriptrapps.io/app/api/subscription/subscriber?auth_token="+config.dmpBrokerToken;
 				log.info("Generated Ingest API : " + JSON.stringify(api));
         var devices = [
             { id: '2345', id_wasp: 'MSK_SA',lat: "-33.4008511", long: "-70.54576139" },
