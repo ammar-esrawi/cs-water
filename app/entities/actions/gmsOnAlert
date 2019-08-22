@@ -15,7 +15,7 @@ function execute(event, signal) {
   var cnMngr = gms.getConnectorManager();
   var myConnector = cnMngr.getConnector();
 
-  var url = "https://convergia-prod.scriptrapps.io/smart-water/index#/dashboard/deviceId/"+event.id+"?temperature="+event.temperature;//TODO move the api to config
+  var url = "https://"+config.subDomain+".scriptrapps.io/smart-water/index#/dashboard/deviceId/"+event.id+"?temperature="+event.temperature;//TODO move the api to config
   var data = {
 
     "signalcode": signal,

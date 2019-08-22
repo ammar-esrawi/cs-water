@@ -19,3 +19,16 @@ myApp
     }
    // $routeProvider.otherwise("/map")
 		}); 
+myApp.run(function($rootScope, $location,adminRoutesJson) {
+        // register listener to watch route changes
+        $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+						
+          //choose main path if now path passed, apply admin pages guard not to allow access from direct url for non admin user
+            if($location.$$path == ""
+              || (adminRoutesJson.includes($location.$$path) && ! $rootScope.isAdmin)
+              ){
+               $location.path("/main")
+            }
+           		
+          })     
+    });

@@ -97,7 +97,7 @@ $.widget( "scriptr.loginWidget", {
                 this.element.data('bootstrapValidator').resetForm();
                 var errorMessageDiv = 	this.element.find("#errorMessage");
                 if(data.response.metadata.status == "success"){ //script could fail for unexpected reasons.
-                    if(data.response.result && data.response.result.metadata.status == "success"){
+                    if(data.response.result.metadata && data.response.result.metadata.status == "success"){
                         localStorage.user = JSON.stringify(data.response.result.result.user);
                         location.href= this.redirectTarget;
                     }else{

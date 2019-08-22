@@ -1,6 +1,6 @@
 var expiry = 60;
 
-
+const subDomain="convergia-marvette";
 var dmpDeviceBroker = "myDmpBroker";
 
 var defaultApp = "smart-water";

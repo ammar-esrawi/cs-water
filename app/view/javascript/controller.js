@@ -7,25 +7,22 @@
        }
         
         vm.user = {"login": JSON.parse($.cookie('user')).name};
-    		vm.menuItems = menuItemsAdminJson;
+    		vm.menuItems = menuItemsJson;
        
        
        	vm.headerItems = headerItemsJson;
+     
+    
+  	vm.isAdmin=false;
+  	vm.userGroups=[];
     		console.log(vm.user);
     
    vm.init = function() {
-     
-     	 wsClient.onClose.then(function(e) {
-          	console.log("websocket closed redirect to login", e);
-            authorization.validateToken()
-           //	if(e.code == "4000" || e.code == "4010") {
-           //    authorization.onTokenInvalid() 
-           // 	} 
-        });
-        httpClient
+     	httpClient
         .get("app/api/login/userGroups", null)
         .then(
         function(data, response) {
+
           vm.userGroups = data;
           vm.isAdmin=vm.userGroups.includes("admin");
           $rootScope.isAdmin=vm.isAdmin;
@@ -38,6 +35,14 @@
         function(err) {
             console.log('ERROR');
         });
+     	 wsClient.onClose.then(function(e) {
+          	console.log("websocket closed redirect to login", e);
+            authorization.validateToken()
+           //	if(e.code == "4000" || e.code == "4010") {
+           //    authorization.onTokenInvalid() 
+           // 	} 
+        });
+       
     
    }
        
